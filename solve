@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cat "$HOME/Downloads/rosalind_$1.txt" | "./problems/$1" | pbcopy
+echo Copied to clipboard:
+pbpaste

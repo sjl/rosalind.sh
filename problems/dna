@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Concise, inefficient:
+# sed -Ee 's/[ACTG]/\0\n/g'  | grep . | sort | uniq -c | awk '{print $1}' | paste -sd ' ' -
+
+# Wordy, efficient:
+awk -f "$(dirname $(realpath "$0"))/dna.awk"

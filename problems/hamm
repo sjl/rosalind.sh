@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+IN=$(cat)
+
+paste -d '' <(echo "$IN" | sed -ne 1p | sed 's/./&\n/g') \
+            <(echo "$IN" | sed -ne 2p | sed 's/./&\n/g') \
+    | grep -vE '([ACGT])\1' \
+    | grep -c .

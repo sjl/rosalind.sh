@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function single() {
+    echo Testing "$(basename "$1")"
+    diff -U0 "$1.out" <(cat "$1.in" | "./$1")
+}
+
+for problem in $(find problems -maxdepth 1 -type f -executable); do
+    single "$problem"
+done
