@@ -2,25 +2,28 @@
 
 set -euo pipefail
 
-grep -o ... | awk '/AUG/,/(UAA|UAG|UGA)/' | sed -E \
-    -e 's/(GCA|GCC|GCG|GCU)/A/' \
+tr -dc AUGC \
+| grep -oPm1 'AUG(...)*?(UAA|UAG|UGA)' | head -1 \
+| grep -o ... \
+| sed -E \
+    -e 's/(GC.)/A/' \
     -e 's/(UGC|UGU)/C/' \
     -e 's/(GAC|GAU)/D/' \
     -e 's/(GAA|GAG)/E/' \
     -e 's/(UUC|UUU)/F/' \
-    -e 's/(GGA|GGC|GGG|GGU)/G/' \
+    -e 's/(GG.)/G/' \
     -e 's/(CAC|CAU)/H/' \
     -e 's/(AUA|AUC|AUU)/I/' \
     -e 's/(AAA|AAG)/K/' \
-    -e 's/(CUA|CUC|CUG|CUU|UUA|UUG)/L/' \
+    -e 's/(CU.|UUA|UUG)/L/' \
     -e 's/(AUG)/M/' \
     -e 's/(AAU|AAC)/N/' \
-    -e 's/(CCA|CCC|CCG|CCU)/P/' \
+    -e 's/(CC.)/P/' \
     -e 's/(CAA|CAG)/Q/' \
-    -e 's/(AGA|AGG|CGA|CGC|CGG|CGU)/R/' \
-    -e 's/(AGC|AGU|UCA|UCC|UCG|UCU)/S/' \
-    -e 's/(ACA|ACC|ACG|ACU)/T/' \
-    -e 's/(GUA|GUC|GUG|GUU)/V/' \
+    -e 's/(AGA|AGG|CG.)/R/' \
+    -e 's/(AGC|AGU|UC.)/S/' \
+    -e 's/(AC.)/T/' \
+    -e 's/(GU.)/V/' \
     -e 's/(UGG)/W/' \
     -e 's/(UAC|UAU)/Y/' \
     -e 's/(UAA|UAG|UGA)//' \
