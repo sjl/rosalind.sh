@@ -1,6 +1,6 @@
 {
     split($0, chars, "")
-    for (i=0; i<length(chars); i++) {
+    for (i in chars) {
         counts[chars[i]]++
     }
 }

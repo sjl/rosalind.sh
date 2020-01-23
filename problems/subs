@@ -3,3 +3,4 @@
 set -euo pipefail
 
 awk -f "$(dirname $(realpath "$0"))/subs.awk"
+echo

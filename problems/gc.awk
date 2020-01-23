@@ -4,7 +4,7 @@
 
 !/^>/ {
     split($0, bases, "")
-    for (i=0; i<length(bases); i++) {
+    for (i in bases) {
         b = bases[i]
         if (b == "G" || b == "C") {
             gc[id]++
@@ -23,5 +23,5 @@ END {
         }
     }
     print max_id
-    printf("%f\n", result)
+    printf("%f\n", max)
 }

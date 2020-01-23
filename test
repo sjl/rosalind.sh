@@ -7,6 +7,6 @@ function single() {
     diff -U0 "$1.out" <(cat "$1.in" | "./$1")
 }
 
-for problem in $(find problems -maxdepth 1 -type f -executable); do
+for problem in $(find problems -maxdepth 1 -type f -executable | sort); do
     single "$problem"
 done
