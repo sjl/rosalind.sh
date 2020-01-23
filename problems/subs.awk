@@ -3,8 +3,8 @@ NR == 2 { needle = $0 }
 
 END {
     while (i = index(haystack, needle)) {
-        if (p) printf(" ")
-        printf("%d", p += i)
+        if (pos) printf(" ")
+        printf("%d", pos += i)
         haystack = substr(haystack, i+1)
     }
 }
