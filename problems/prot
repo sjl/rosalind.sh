@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+grep -oE 'AUG.*?(UAA|UAG|UGA)' | grep -o ... | sed -E \
+    -e 's/(GCA|GCC|GCG|GCU)/A/g' \
+    -e 's/(UGC|UGU)/C/g' \
+    -e 's/(GAC|GAU)/D/g' \
+    -e 's/(GAA|GAG)/E/g' \
+    -e 's/(UUC|UUU)/F/g' \
+    -e 's/(GGA|GGC|GGG|GGU)/G/g' \
+    -e 's/(CAC|CAU)/H/g' \
+    -e 's/(AUA|AUC|AUU)/I/g' \
+    -e 's/(AAA|AAG)/K/g' \
+    -e 's/(CUA|CUC|CUG|CUU|UUA|UUG)/L/g' \
+    -e 's/(AUG)/M/g' \
+    -e 's/(AAU|AAC)/N/g' \
+    -e 's/(CCA|CCC|CCG|CCU)/P/g' \
+    -e 's/(CAA|CAG)/Q/g' \
+    -e 's/(AGA|AGG|CGA|CGC|CGG|CGU)/R/g' \
+    -e 's/(AGC|AGU|UCA|UCC|UCG|UCU)/S/g' \
+    -e 's/(ACA|ACC|ACG|ACU)/T/g' \
+    -e 's/(GUA|GUC|GUG|GUU)/V/g' \
+    -e 's/(UGG)/W/g' \
+    -e 's/(UAC|UAU)/Y/g' \
+    -e 's/(UAA|UAG|UGA)//g' \
+| tr -d '\n'
