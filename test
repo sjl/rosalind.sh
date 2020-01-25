@@ -3,7 +3,7 @@
 set -euo pipefail
 
 function single() {
-    echo Testing "$(basename "$1")"
+    echo "Testing $(basename "$1")…"
     diff -U0 "$1.out" <(cat "$1.in" | "./$1")
 }
 

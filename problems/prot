@@ -29,5 +29,3 @@ tr -dc AUGC \
     -e 's/(UAA|UAG|UGA)//' \
 | tr -d '\n'
 echo
-
-
