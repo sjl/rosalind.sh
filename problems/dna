@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Concise, inefficient:
-# grep -o . | sort | uniq -c | awk '{print $1}' | paste -sd ' ' -
+# grep -oP '[ATGC]' | sort | uniq -c | awk '{print $1}' | paste -sd ' ' -
 
 # Wordy, efficient:
 awk -f "$(dirname $(realpath "$0"))/dna.awk"
