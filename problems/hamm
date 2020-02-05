@@ -2,9 +2,13 @@
 
 set -euo pipefail
 
-IN=$(cat)
+# IN=$(cat)
+# S1=$(echo "$IN" | sed -ne 1p)
+# S2=$(echo "$IN" | sed -ne 2p)
 
-paste -d '' <(echo "$IN" | sed -ne 1p | sed 's/./&\n/g') \
-            <(echo "$IN" | sed -ne 2p | sed 's/./&\n/g') \
-    | grep -vE '([ACGT])\1' \
-    | grep -c .
+# paste -d '' <(echo "$S1" | sed 's/./&\n/g') \
+#             <(echo "$S2" | sed 's/./&\n/g') \
+#     | grep -vE '([ACGT])\1' \
+#     | grep -c .
+
+awk -f "$(dirname $(realpath "$0"))/hamm.awk"
