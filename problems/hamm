@@ -2,9 +2,8 @@
 
 set -euo pipefail
 
-# IN=$(cat)
-# S1=$(echo "$IN" | sed -ne 1p)
-# S2=$(echo "$IN" | sed -ne 2p)
+# read -r S1
+# read -r S2
 
 # paste -d '' <(echo "$S1" | sed 's/./&\n/g') \
 #             <(echo "$S2" | sed 's/./&\n/g') \
